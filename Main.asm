@@ -57,8 +57,48 @@ LD R0, pipe
 TRAP x21
 
 ;start of looking for end codon
+loop3
+LDI R0, Buffer
+BRz loop3
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
+
+LD R3, U
+ADD R3, R3, R0
+BRnp loop3
+
+loop4
+LDI R0, Buffer
+BRz loop4
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
+LD R3, A
+ADD R3, R3, R0
+BRz loop5
+LD R3, G
+ADD R3, R3, R0
+BRz loop6
+BRnp loop3
+
+loop5	;loop for UAA or UAG
+LDI R0, Buffer
+BRz loop5
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
+LD R3, A
+ADD R3, R3, R0
+BRz endcodon
+LD R3, G
+ADD R3, R3, R0
+BRz endcodon
+BRnp loop3
 
 
+
+endcodon
 TRAP x25
 
 ADDRESS		.FILL x4000
