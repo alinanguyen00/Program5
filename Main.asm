@@ -27,8 +27,36 @@ AND R1, R1, #0
 STI R1, Buffer
 
 ;checking the letter in R0 for start codon
+;checking if an A
+LD R3, A
+ADD R3, R3, R0
+BRnp loop
 
+loop1
+LDI R0, Buffer
+BRz loop1
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
 
+LD R3, U
+ADD R3, R3, R0
+BRnp loop
+
+loop2
+LDI R0, Buffer
+BRz loop2
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
+LD R3, G
+ADD R3, R3, R0
+BRnp loop
+;created a start codon, print pipe
+LD R0, pipe
+TRAP x21
+
+;start of looking for end codon
 
 
 TRAP x25
@@ -39,4 +67,5 @@ ISR1		.FILL x2600
 KBSR		.FILL xFE00
 KBDR		.FILL xFE02
 Buffer		.FILL x4600
+pipe		.FILL #124
 		.END
