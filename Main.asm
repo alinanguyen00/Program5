@@ -27,8 +27,8 @@ AND R1, R1, #0
 STI R1, Buffer
 
 ;checking the letter in R0 for start codon
-;checking if an A
-LD R3, A
+;checking if an Acharacter
+LD R3, Acharacter
 ADD R3, R3, R0
 BRnp loop
 
@@ -39,7 +39,7 @@ TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
 
-LD R3, U
+LD R3, Ucharacter
 ADD R3, R3, R0
 BRnp loop
 
@@ -49,7 +49,7 @@ BRz loop2
 TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
-LD R3, G
+LD R3, Gcharacter
 ADD R3, R3, R0
 BRnp loop
 ;created a start codon, print pipe
@@ -64,7 +64,7 @@ TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
 
-LD R3, U
+LD R3, Ucharacter
 ADD R3, R3, R0
 BRnp loop3
 
@@ -74,10 +74,10 @@ BRz loop4
 TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
-LD R3, A
+LD R3, Acharacter
 ADD R3, R3, R0
 BRz loop5
-LD R3, G
+LD R3, Gcharacter
 ADD R3, R3, R0
 BRz loop6
 BRnp loop3
@@ -88,10 +88,10 @@ BRz loop5
 TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
-LD R3, A
+LD R3, Acharacter
 ADD R3, R3, R0
 BRz endcodon
-LD R3, G
+LD R3, Gcharacter
 ADD R3, R3, R0
 BRz endcodon
 BRnp loop3
@@ -108,4 +108,7 @@ KBSR		.FILL xFE00
 KBDR		.FILL xFE02
 Buffer		.FILL x4600
 pipe		.FILL #124
+Acharacter	.FILL x-41
+Ucharacter	.FILL x-55
+Gcharacter	.FILL x-47
 		.END
