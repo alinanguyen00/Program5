@@ -10,12 +10,12 @@
 
 ; set up the keyboard interrupt vector table entry
 		LD R1, ISR1
-		ST R1, Int
+		STI R1, Int
 
 
 ; enable keyboard interrupts
 		LD R1, ADDRESS
-		ST R1, KBSR
+		STI R1, KBSR
 
 
 ; start of actual program
