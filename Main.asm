@@ -96,7 +96,15 @@ ADD R3, R3, R0
 BRz endcodon
 BRnp loop3
 
-
+loop6
+LDI R0, Buffer
+BRz loop4
+TRAP x21
+AND R1, R1, #0
+STI R1, Buffer
+LD R3, Acharacter
+ADD R3, R3, R0
+BRnp loop3
 
 endcodon
 TRAP x25
