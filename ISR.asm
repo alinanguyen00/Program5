@@ -9,22 +9,22 @@
 		LD R0, A
 		ADD R0, R1, R0
 		BRnp NextL
-		ST R1, CharAdd
+		STI R1, CharAdd
 		BRnzp DONE
 NextL		LD R0, U
 		ADD R0, R1, R0
 		BRnp NextL1
-		ST R1, CharAdd
+		STI R1, CharAdd
 		BRnzp DONE
 NextL1		LD R0, C
 		ADD R0, R1, R0
 		BRnp NextL2
-		ST R1, CharAdd
+		STI R1, CharAdd
 		BRnzp DONE
 NextL2		LD R0, G
 		ADD R0, R1, R0
 		BRnp DONE
-		ST R1, CharAdd
+		STI R1, CharAdd
 DONE		RTI
 
 	
