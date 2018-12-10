@@ -41,7 +41,7 @@ STI R1, Buffer
 
 LD R3, Ucharacter
 ADD R3, R3, R0
-BRnp loop
+BRnp #-11
 
 loop2
 LDI R0, Buffer
@@ -80,7 +80,7 @@ BRz loop5
 LD R3, Gcharacter
 ADD R3, R3, R0
 BRz loop6
-BRnp loop3
+BRnp #-15
 
 loop5	;loop for UAA or UAG
 LDI R0, Buffer
@@ -98,7 +98,7 @@ BRnp loop3
 
 loop6
 LDI R0, Buffer
-BRz loop4
+BRz loop6
 TRAP x21
 AND R1, R1, #0
 STI R1, Buffer
