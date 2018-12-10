@@ -94,7 +94,7 @@ BRz endcodon
 LD R3, Gcharacter
 ADD R3, R3, R0
 BRz endcodon
-BRnp loop3
+BRnp #-27
 
 loop6
 LDI R0, Buffer
@@ -104,7 +104,7 @@ AND R1, R1, #0
 STI R1, Buffer
 LD R3, Acharacter
 ADD R3, R3, R0
-BRnp loop3
+BRnp #-35
 
 endcodon
 TRAP x25
